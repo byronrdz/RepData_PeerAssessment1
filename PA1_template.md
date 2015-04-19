@@ -55,7 +55,7 @@ Plotting the number of steps in the 5 minutes interval shows the folloing graphi
 
 
 ```r
-plot(info$steps,type="l")
+plot(info$steps,type="l",ylab="steps/5min")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
@@ -116,4 +116,32 @@ g + geom_histogram(binwidth=1000)
 In this histogram we can see there are more samples around 10000 steps with respect to the last graphic.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+In these graphics we can se the difference in activity between the weekdays and weekends.  
+
+The data is filtered and organized according to name of the day
+
+```r
+info <- mutate(info, week="test")
+
+wkend <- which(info$day=="Saturday" | info$day=="Sunday")
+info[wkend,5] <- "Weekend"
+
+wk <- which(info$week == "test")
+info[wk,5] <- "Weekday"
+
+info_wkend <- info%>%select(steps,week)%>%filter(week=="Weekend")
+info_wkend <- info_wkend%>%select(steps,week)%>%filter(!is.na(steps))
+info_wkday <- info%>%select(steps,week)%>%filter(week=="Weekday")
+info_wkday <- info_wkday%>%select(steps,week)%>%filter(!is.na(steps))
+
+par(mfrow=c(2,1))
+plot(info_wkend$steps,type="l",main="Weekends",ylab="steps/5 min")
+plot(info_wkday$steps,type="l",main="Weekdays",ylab="steps/5 min")
+```
+
+![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
+
+
+
 
