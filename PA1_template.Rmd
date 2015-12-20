@@ -11,7 +11,7 @@ output:
 ```{r echo=FALSE,warning=FALSE,results='hide'}
 library(dplyr,quietly=TRUE,warn.conflicts=FALSE)
 library(ggplot2,quietly=TRUE,warn.conflicts=FALSE)
-setwd('C:/Users/Byron/Documents/Coursera Data Science Sp/RepData_PeerAssessment1')
+setwd("C:/Users/Byron/Documents/GitHub/RepData_PeerAssessment1")
 Sys.setlocale("LC_TIME","English")
 ```
 ```{r}
